@@ -30,8 +30,9 @@ require('./controllers/controllerIndex')(router);
 app.use('/api', router);
 app.use(morgan('dev'));
 
+//catch all route in case no routes work.
 app.use('*', function(req, res){
-  res.status(404).json({ message: 'Not found' });
+  res.status(404).json({ message: 'Problem found' });
 });
 
 var port = process.env.PORT || 4000;
