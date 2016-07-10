@@ -46,36 +46,59 @@
 
 	'use strict';
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(33);
 	var Provider = __webpack_require__(170).Provider;
 	var store = __webpack_require__(192);
-	
 	var routes = __webpack_require__(215);
 	
+	var Container = function (_React$Component) {
+	  _inherits(Container, _React$Component);
+	
+	  function Container(props) {
+	    _classCallCheck(this, Container);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Container).call(this, props));
+	  }
+	
+	  _createClass(Container, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        Provider,
+	        { store: store },
+	        React.createElement(
+	          'div',
+	          null,
+	          routes
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Container;
+	}(React.Component);
+	
+	;
+	
 	document.addEventListener('DOMContentLoaded', function () {
-	  ReactDOM.render(React.createElement(
-	    Provider,
-	    { store: store },
-	    routes
-	  ));
+	  ReactDOM.render(React.createElement(Container, null), document.getElementById('app'));
 	});
 	
-	// class Container extends React.Component{
-	//   constructor(props){
-	//     super(props);
-	//   }
-	//   render(){
-	//     return(
-	//       <Provider store={store}>
-	//         {routes}
-	//       </Provider>
-	//     );
-	//   }
-	// }
-
 	// document.addEventListener('DOMContentLoaded', function(){
-	//   ReactDOM.render(<Container />, document.getElementById('app'));
+	//   ReactDOM.render(
+	//     <Provider store={store}>
+	//       {routes}
+	//     </Provider>
+	//   );
 	// });
 
 	// var router = require('react-router');
@@ -22635,10 +22658,10 @@
 	var contactsReducer = function contactsReducer(state, action) {
 	  state = state || initialState;
 	  switch (action.type) {
-	    case FETCH_CONTACTS_SUCCESS:
+	    case actions.FETCH_CONTACTS_SUCCESS:
 	      return Object.assign({}, state, { contacts: action.contacts });
 	      break;
-	    case FETCH_CONTACTS_ERROR:
+	    case actions.FETCH_CONTACTS_ERROR:
 	      throw new Error('Fetching contacts failed');
 	    default:
 	      return state;
@@ -29388,21 +29411,33 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(170);
+	
+	var _MuiThemeProvider = __webpack_require__(283);
+	
+	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+	
+	var _reactTapEventPlugin = __webpack_require__(277);
+	
+	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
+	
+	var _AppBar = __webpack_require__(439);
+	
+	var _AppBar2 = _interopRequireDefault(_AppBar);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var React = __webpack_require__(1);
-	var connect = __webpack_require__(170).connect;
-	var actions = __webpack_require__(195);
-	var injectTapEventPlugin = __webpack_require__(277);
-	var MuiThemeProvider = __webpack_require__(283);
-	
-	var AppBar = __webpack_require__(439);
-	
-	injectTapEventPlugin();
+	(0, _reactTapEventPlugin2.default)();
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -29416,25 +29451,20 @@
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(
-	        MuiThemeProvider,
+	      return _react2.default.createElement(
+	        _MuiThemeProvider2.default,
 	        null,
-	        React.createElement(
+	        _react2.default.createElement(
 	          'div',
 	          null,
-	          React.createElement(
-	            'h1',
-	            null,
-	            'Test'
-	          ),
-	          React.createElement(AppBar, { title: 'Test' })
+	          _react2.default.createElement(_AppBar2.default, { title: 'Contacts' })
 	        )
 	      );
 	    }
 	  }]);
 	
 	  return App;
-	}(React.Component);
+	}(_react2.default.Component);
 	
 	;
 	
@@ -29445,7 +29475,7 @@
 	  };
 	};
 	
-	var Container = connect(mapStateToProps)(App);
+	var Container = (0, _reactRedux.connect)(mapStateToProps)(App);
 	
 	module.exports = Container;
 

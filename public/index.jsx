@@ -2,33 +2,37 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Provider = require('react-redux').Provider;
 var store = require('./js/store');
-
 var routes = require('./routes/routes');
 
+class Container extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return(
+      <Provider store={store}>
+        <div>
+          {routes}
+        </div>
+      </Provider>
+    );
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function(){
-  ReactDOM.render(
-    <Provider store={store}>
-      {routes}
-    </Provider>
-  );
+  ReactDOM.render(<Container />, document.getElementById('app'));
 });
 
-// class Container extends React.Component{
-//   constructor(props){
-//     super(props);
-//   }
-//   render(){
-//     return(
-//       <Provider store={store}>
-//         {routes}
-//       </Provider>
-//     );
-//   }
-// }
 
 // document.addEventListener('DOMContentLoaded', function(){
-//   ReactDOM.render(<Container />, document.getElementById('app'));
+//   ReactDOM.render(
+//     <Provider store={store}>
+//       {routes}
+//     </Provider>
+//   );
 // });
+
+
 
 // var router = require('react-router');
 // var Router = router.Router;

@@ -28,6 +28,8 @@ require('./controllers/controllerIndex')(router);
 
 //make sure the routes will be prefixed w api.
 app.use('/api', router);
+//use the public folder for routes after /
+app.use('/', express.static('public'));
 app.use(morgan('dev'));
 
 //catch all route in case no routes work.

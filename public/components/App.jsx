@@ -1,11 +1,9 @@
-var React = require('react');
-var connect = require('react-redux').connect;
-var actions = require('../js/actions');
-var injectTapEventPlugin = require('react-tap-event-plugin');
-var MuiThemeProvider = require('material-ui/styles/MuiThemeProvider');
+import React from 'react';
+import { connect } from 'react-redux';
 
-var AppBar = require('material-ui/AppBar');
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import AppBar from 'material-ui/AppBar';
 
 injectTapEventPlugin();
 
@@ -17,8 +15,7 @@ class App extends React.Component {
     return(
       <MuiThemeProvider>
         <div>
-          <h1>Test</h1>
-          <AppBar title={'Test'} />
+          <AppBar title={'Contacts'} />
         </div>
       </MuiThemeProvider>
     );
