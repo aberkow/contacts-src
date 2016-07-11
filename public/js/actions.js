@@ -18,10 +18,12 @@ var fetchContactsError = function(contacts, error){
   };
 };
 
+//try jquery...
 var fetchContacts = function(contacts){
   return function(dispatch){
     return axios.get(url).then(function(response){
       if (response.state < 200 || response.status >= 300){
+        debugger;
         console.error('error at axios.get(url)');
         var error = new Error(response.statusText)
         error.response = response
@@ -31,14 +33,16 @@ var fetchContacts = function(contacts){
     })
     .then(function(response){
       console.log(response, 'from fetchContacts response');
-      return response.json();
+      //debugger;
+      return response;
     })
     .then(function(data){
       console.log(data, 'from fetchContacts()');
-      var contacts = data.contacts;
+      var contacts = data;
       return dispatch(fetchContactsSuccess(contacts));
     })
     .catch(function(error){
+      console.log(error.message, 'from fetchContacts catch');
       return dispatch(fetchContactsError(contacts, error));
     });
   }

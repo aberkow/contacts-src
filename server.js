@@ -20,6 +20,7 @@ router.use(function(req, res, next){
 });
 
 router.get('/', function(req, res){
+  console.log(req.body, 'from router.get "/"');
   res.json({ message: 'Success!' });
 });
 
@@ -30,6 +31,7 @@ require('./controllers/controllerIndex')(router);
 app.use('/api', router);
 //use the public folder for routes after /
 app.use('/', express.static('public'));
+//log http status codes nicely.
 app.use(morgan('dev'));
 
 //catch all route in case no routes work.
