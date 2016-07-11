@@ -1,7 +1,7 @@
 var actions = require('./actions');
 
 var initialState = {
-  contacts: []
+  contacts: {}
 };
 
 var contactsReducer = function(state, action){
