@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var packageData = require('./package.json');
 
 module.exports = {
-  entry: path.resolve(__dirname, './public/index.jsx'),
+  entry: path.resolve(__dirname, './public/index.js'),
   output: {
     path: path.resolve(__dirname, './public/build'),
     filename: 'bundle.js'
