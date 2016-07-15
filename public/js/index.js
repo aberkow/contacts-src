@@ -56,7 +56,7 @@ var showContacts = function(results){
     contact.phoneNumber = results[i].phoneNumber;
     contact.email = results[i].email;
     contact.id = results[i]._id;
-    contact.html += "<div class='list-group singleContactContainer' data-id=" + contact.id + "><h4 class='list-group-item-heading'>" + contact.firstName + " " + contact.lastName + "</h4><p class='list-group-item-text'>" + contact.phoneNumber + "</p><p class='list-group-item-text'>" + contact.emailAddress + "</p>" + "<button type='button' class='btn btn-primary contactUpdateButton' data-toggle='modal' data-target='#updateContactModal'>Update</button><button type='button' class='btn btn-default contactDeleteButton'>Delete</button></div>";
+    contact.html += "<div class='list-group singleContactContainer' data-id=" + contact.id + "><h4 class='list-group-item-heading'>" + contact.firstName + " " + contact.lastName + "</h4><p class='list-group-item-text'>" + contact.phoneNumber + "</p><p class='list-group-item-text'>" + contact.email + "</p>" + "<button type='button' class='btn btn-primary contactUpdateButton' data-toggle='modal' data-target='#updateContactModal'>Update</button><button type='button' class='btn btn-default contactDeleteButton'>Delete</button></div>";
 
     //the <p> tag for the email address exists, but it's not grabbing the contact.emailAddress value...
 
