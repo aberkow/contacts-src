@@ -44,6 +44,7 @@ exports.default = function(router){
         if (err){
           res.send(err);
         }
+        console.log(req.body, 'from PUT');
         contact.firstName = req.body.firstName;
         contact.lastName = req.body.lastName;
         contact.phoneNumber = req.body.phoneNumber;
@@ -59,6 +60,7 @@ exports.default = function(router){
     })
     .delete(function(req, res){
       Contact.findByIdAndRemove(req.params.id, function(err, contact){
+        console.log(req.params.id, 'from DELETE');
         if (err){
           res.send(err);
         }

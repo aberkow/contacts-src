@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Contacts</title>
 
     <!-- Bootstrap -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     </div>
     <!--form for adding contacts-->
      <div class="container">
-       <form role="form">
+       <form role="form" id='mainForm'>
         <div class="form-group">
           <label for="firstNameForm">First Name:</label>
           <input type="text" class="form-control" id="firstNameForm">
@@ -38,13 +38,15 @@
         </div>
         <div class="form-group">
           <label for="email">Email address:</label>
-          <input type="email" class="form-control" id="email">
-        </div> 
+          <input type="email" class="form-control" id="emailForm">
+        </div>
         <button type="submit" class="btn btn-default">Add Contact</button>
       </form>
+
+
     </div>
     <!--Area for contacts-->
-    <div class="container">
+    <div class="container" id="contactContainer">
       <div class="list-group">
         <h4 class="list-group-item-heading">Adam Berkowitz</h4>
         <p class="list-group-item-text">732-266-0883</p>
@@ -64,11 +66,54 @@
       </div>
     </div>
 -->
-    
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#updateContactModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="updateContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="updateContactModalLabel">Update</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" id='updateForm'>
+         <div class="form-group">
+           <label for="updateFirstName">First Name:</label>
+           <input type="text" class="form-control" id="updateFirstName">
+         </div>
+         <div class="form-group">
+           <label for="updateLastName">Last Name:</label>
+           <input type="text" class="form-control" id="updateLastName">
+         </div>
+         <div class="form-group">
+           <label for="updatePhoneNumber">Phone Number:</label>
+           <input type="tel" class="form-control" id="updatePhoneNumber">
+         </div>
+         <div class="form-group">
+           <label for="updateEmailaddress">Email address:</label>
+           <input type="email" class="form-control" id="updateEmailaddress">
+         </div>
+        <button type="submit" class="btn btn-primary" id="updateFormSubmit">Update Contact</button>
+       </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="updateFormSubmit">Update Contact</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="./js/bootstrap.min.js"></script>
+    <script src='./js/index.js'></script>
   </body>
 </html>
