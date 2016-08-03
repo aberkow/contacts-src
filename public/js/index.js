@@ -56,37 +56,12 @@ var showContacts = function(results){
     contact.phoneNumber = results[i].phoneNumber;
     contact.email = results[i].email;
     contact.id = results[i]._id;
-    contact.html += "<div class='list-group singleContactContainer' data-id=" + contact.id + "><h4 class='list-group-item-heading'>" + contact.firstName + " " + contact.lastName + "</h4><p class='list-group-item-text'>" + contact.phoneNumber + "</p><p class='list-group-item-text'>" + contact.email + "</p>" + "<button type='button' class='btn btn-primary contactUpdateButton' data-toggle='modal' data-target='#updateContactModal'>Update</button><button type='button' class='btn btn-default contactDeleteButton'>Delete</button></div>";
-
-    //the <p> tag for the email address exists, but it's not grabbing the contact.emailAddress value...
-
-    // + "<div class='contactUpdateContainer' style='display:none;' data-id=" + contact.id +
-
-    // <p class='list-group-item-text'>
-    // </p>
-
-    //<div class='contactUpdateContainer' style='display:none;' data-id=" + contact.id + "><form role='form' class='contactUpdateForm'><div class='form-group'><label for='firstNameUpdateForm'>First Name:</label><input type='text' class='form-control' id='firstNameUpdateForm" + contact.id + "></div><div class='form-group'><label for='lastNameUpdateForm'>Last Name:</label><input type='text' class='form-control' id='lastNameUpdateForm + contact.id + ></div><div class='form-group'><label for='phoneNumberUpdateForm'>Phone Number:</label><input type='text' class='form-control' id='phoneNumberUpdateForm + contact.id + ></div><div class='form-group'><label for='emailUpdateForm'>Email:</label><input type='text' class='form-control' id='emailUpdateForm' + contact.id + ></div>"
-
-
-    // <div class="list-group">
-    //   <h4 class="list-group-item-heading">Adam Berkowitz</h4>
-    //   <p class="list-group-item-text">732-266-0883</p>
-    //   <p class="list-group-item-text">adam@adamjberkowitz.com</p>
-    //   <button type="button" class="btn btn-default">Edit</button>
-    //   <button type="button" class="btn btn-default">Delete</button>
-    // </div>
-
-// <button type='button' class='btn btn-default contactEditButton' data-toggle='collapse' data-target='#'" + contact.id + "aria-expanded='false' aria-controls=" + contact.id + ">Edit</button>
-
-// <button class='btn btn-default contactEditButton' type='button' data-toggle='collapse' data-target='#" + contact.id + '"aria-expanded=false aria-controls=" + contact.id + ">
-
-
-
-// aria-expanded='false'
-    //+ ">Edit</button><button type='button' class='btn btn-default contactDeleteButton'>Delete</button></div>"
+    // contact.html += "<div class='list-group singleContactContainer' data-id=" + contact.id + "><h4 class='list-group-item-heading'>" + contact.firstName + " " + contact.lastName + "</h4><p class='list-group-item-text'>" + contact.phoneNumber + "</p><p class='list-group-item-text'>" + contact.email + "</p>" + "<button type='button' class='btn btn-primary contactUpdateButton' data-toggle='modal' data-target='#updateContactModal'>Update</button><button type='button' class='btn btn-default contactDeleteButton'>Delete</button></div>";
+    contact.html = "<div class='list-group singleContactContainer' data-id=" + contact.id + "><h4 class='list-group-item-heading'>" + contact.firstName + " " + contact.lastName + "</h4><p class='list-group-item-text'>" + contact.phoneNumber + "</p><p class='list-group-item-text'>" + contact.email + "</p>" + "<button type='button' class='btn btn-primary contactUpdateButton' data-toggle='modal' data-target='#updateContactModal'>Update</button><button type='button' class='btn btn-default contactDeleteButton'>Delete</button></div>";
+    $('#contactContainer').append(contact.html);
   }
   // console.log(contact.html, 'from showContacts');
-  $('#contactContainer').append(contact.html);
+  //$('#contactContainer').append(contact.html);
 };
 
 //add one contact
@@ -176,3 +151,33 @@ function Contact(firstName, lastName, phoneNumber, emailAddress){
   this.phoneNumber = phoneNumber;
   this.emailAddress = emailAddress;
 };
+
+
+
+
+    //the <p> tag for the email address exists, but it's not grabbing the contact.emailAddress value...
+
+    // + "<div class='contactUpdateContainer' style='display:none;' data-id=" + contact.id +
+
+    // <p class='list-group-item-text'>
+    // </p>
+
+    //<div class='contactUpdateContainer' style='display:none;' data-id=" + contact.id + "><form role='form' class='contactUpdateForm'><div class='form-group'><label for='firstNameUpdateForm'>First Name:</label><input type='text' class='form-control' id='firstNameUpdateForm" + contact.id + "></div><div class='form-group'><label for='lastNameUpdateForm'>Last Name:</label><input type='text' class='form-control' id='lastNameUpdateForm + contact.id + ></div><div class='form-group'><label for='phoneNumberUpdateForm'>Phone Number:</label><input type='text' class='form-control' id='phoneNumberUpdateForm + contact.id + ></div><div class='form-group'><label for='emailUpdateForm'>Email:</label><input type='text' class='form-control' id='emailUpdateForm' + contact.id + ></div>"
+
+
+    // <div class="list-group">
+    //   <h4 class="list-group-item-heading">Adam Berkowitz</h4>
+    //   <p class="list-group-item-text">732-266-0883</p>
+    //   <p class="list-group-item-text">adam@adamjberkowitz.com</p>
+    //   <button type="button" class="btn btn-default">Edit</button>
+    //   <button type="button" class="btn btn-default">Delete</button>
+    // </div>
+
+// <button type='button' class='btn btn-default contactEditButton' data-toggle='collapse' data-target='#'" + contact.id + "aria-expanded='false' aria-controls=" + contact.id + ">Edit</button>
+
+// <button class='btn btn-default contactEditButton' type='button' data-toggle='collapse' data-target='#" + contact.id + '"aria-expanded=false aria-controls=" + contact.id + ">
+
+
+
+// aria-expanded='false'
+    //+ ">Edit</button><button type='button' class='btn btn-default contactDeleteButton'>Delete</button></div>"
