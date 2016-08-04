@@ -8,11 +8,19 @@ var sequence = require('gulp-sequence');
 var webpackStream = require('webpack-stream');
 
 tasks = {
-  cleanAll: function(){
-    return del([
-      'contacts/build',
-      '!build/.git'
-    ]);
+  // cleanAll: function(){
+  //   return del([
+  //     'contacts/build',
+  //     '!build/.git'
+  //   ]);
+  // },
+  cleanPublicTest: function(){
+    return del.sync([
+      '../build/public/**',
+      '!../build/public'
+    ], {
+      force: true
+    })
   },
   copyControllers: function(){
     gulp.src('./controllers/**/*')
@@ -30,6 +38,15 @@ tasks = {
     gulp.src('./public/**/*')
       .pipe(gulp.dest('../build/public'))
   },
+  dryRunTest: function(){
+    return del(['../build/public/**', '!../build/public'], {
+      dryRun: true,
+      force: true
+    })
+    .then(paths => {
+      console.log('files and folders that would be deleted:\n', paths.join('\n'));
+    })
+  },
   jshint: function(){
     return gulp.src('./public/js/*.js')
       .pipe(jshint())
@@ -37,9 +54,12 @@ tasks = {
   }
 }
 
+gulp.task('cleanAll', tasks.cleanAll);
+gulp.task('cleanPublicTest', tasks.cleanPublicTest);
 gulp.task('copyControllers', tasks.copyControllers);
 gulp.task('copyDb', tasks.copyDb);
 gulp.task('copyModels', tasks.copyModels);
 gulp.task('copyPublic', tasks.copyPublic);
+gulp.task('dryRunTest', tasks.dryRunTest);
 
 gulp.task('copyAll', function(cb){sequence('copyControllers', 'copyDb', 'copyModels', 'copyPublic', cb); });
