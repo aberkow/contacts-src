@@ -8,13 +8,31 @@ var sequence = require('gulp-sequence');
 var webpackStream = require('webpack-stream');
 
 tasks = {
-  // cleanAll: function(){
-  //   return del([
-  //     'contacts/build',
-  //     '!build/.git'
-  //   ]);
-  // },
-  cleanPublicTest: function(){
+  cleanControllers: function(){
+    return del.sync([
+      '../build/controllers/**',
+      '!../build/controllers'
+    ], {
+      force: true
+    })
+  },
+  cleanDb: function(){
+    return del.sync([
+      '../build/db/**',
+      '!../build/db'
+    ], {
+      force: true
+    })
+  },
+  cleanModels: function(){
+    return del.sync([
+      '../build/models/**',
+      '!../build/models'
+    ], {
+      force: true
+    })
+  },
+  cleanPublic: function(){
     return del.sync([
       '../build/public/**',
       '!../build/public'
@@ -52,14 +70,18 @@ tasks = {
       .pipe(jshint())
       .pipe(jshint.reporter('default'));
   }
-}
+};
 
-gulp.task('cleanAll', tasks.cleanAll);
-gulp.task('cleanPublicTest', tasks.cleanPublicTest);
+
+gulp.task('cleanControllers', tasks.cleanControllers);
+gulp.task('cleanDb', tasks.cleanDb);
+gulp.task('cleanModels', tasks.cleanModels);
+gulp.task('cleanPublic', tasks.cleanPublicTest);
 gulp.task('copyControllers', tasks.copyControllers);
 gulp.task('copyDb', tasks.copyDb);
 gulp.task('copyModels', tasks.copyModels);
 gulp.task('copyPublic', tasks.copyPublic);
 gulp.task('dryRunTest', tasks.dryRunTest);
 
+gulp.task('cleanAll', function(cb){sequence('cleanControllers', 'cleanDb', 'cleanModels', 'cleanPublic', cb); });
 gulp.task('copyAll', function(cb){sequence('copyControllers', 'copyDb', 'copyModels', 'copyPublic', cb); });
